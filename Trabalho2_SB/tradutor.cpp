@@ -264,7 +264,10 @@ void escreverFuncoesIO(ofstream& arq){
 }
 
 void escreverInput(ofstream& arq){
-	arq<<""<<endl;
+	arq<<"lerInteiro:\tmov eax, 3\n\t\tmov ebx, 0\n\t\tmov ecx, num\n\t\tmov edx, tamNum\n\t\tint 0x80\n\t\t"
+			"mov esi, 0\n\t\tmov eax, 0\n\t\tmov ebx, 0\nconverteNum:\tmov BYTE bl, [num+esi]\n\t\tcmp bl, 0xA\n\t\t"
+			"je f_lerInteiro\n\t\tsub bl, 0x30\n\t\tmov edx, 0xA\n\t\tmul edx\n\t\tmovzx edx, bl\n\t\tadd eax, edx\n\t\t"
+			"inc esi\n\t\tmov ebx, 0\n\t\tjmp converteNum\n\n\t\tf_lerInteiro: ret"<<endl;
 }
 
 void escreverOutput(ofstream& arq){
@@ -272,11 +275,12 @@ void escreverOutput(ofstream& arq){
 }
 
 void escreverC_input(ofstream& arq){
-	arq<<""<<endl;
+	arq<<"lerChar:\tmov eax, 3\n\t\tmov ebx, 0\n\t\tmov ecx, char\n\t\tmov edx, tam_char\n\t\t"
+			"int 0x80\n\t\tmov byte bl, [char]\n\t\tmovzx eax, bl\n\t\tret"<<endl;
 }
 
 void escreverC_output(ofstream& arq){
-	arq<<""<<endl;
+	arq<<"escreverChar:	mov eax, 4\n\t\tmov ebx, 1\n\t\tmov ecx, char\n\t\tmov edx, tam_char\n\t\tint 0x80\n\t\tret"<<endl;
 }
 
 void escreverS_input(ofstream& arq){

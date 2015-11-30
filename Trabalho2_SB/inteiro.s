@@ -10,7 +10,7 @@ mov esi, 0
 call escreverInteiro
 mov eax, 1
 mov ebx, 0
-int 80h
+int 0X80
 section .data
 msg dd 'Ok'
 tamNum equ 4
@@ -41,13 +41,14 @@ escreverInteiro:
 			mov edx, 0
 			mov ebx, 0XA
 			div ebx
-			add edx, 0X30
-			mov [num+esi], edx
+			add dl, 0X30
+			mov BYTE [num+esi], dl
 			inc esi
 			cmp eax, 0
 			je f_escreverInteiro
 			jmp escreverInteiro
 f_escreverInteiro:	
+			mov BYTE [num+esi], 0X0A
 			mov eax, 4
 			mov ebx, 1
 			mov ecx, num

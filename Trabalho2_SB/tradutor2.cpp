@@ -27,8 +27,6 @@ int main ()
     int i, j, n;
 
     /*leitura*/
-    cout << "Hello\n";
-    getchar();
     ifstream in (arqin);
     if(in.is_open())
     {
@@ -158,8 +156,6 @@ int main ()
                 {
                     inst = a + 1;
                     flag = 1;
-                    cout << "inst = " << inst << "\n";
-                    getchar();
                 }
             }
             if(flag == 1)
@@ -200,8 +196,6 @@ int main ()
 					break;
 					case 10: /*LOAD*/
 						out << "mov eax, ["<< tokens[j][i+1] << "]\n";
-                        printf("OK\n");
-                        getchar();
 					break;
 					case 11: /*STORE*/
 						out << "mov [" << tokens[j][i+1] << "], eax\n";
@@ -231,8 +225,6 @@ int main ()
 						out << "int 80h\n";
 					break;
 					case 15: /*C_INPUT*/
-                        printf("OK\n");
-                        getchar();
 						out<<"call lerChar"<<endl;
 						out<<"mov ["<<tokens[j][i+1]<<"], eax"<<endl;
 						break;

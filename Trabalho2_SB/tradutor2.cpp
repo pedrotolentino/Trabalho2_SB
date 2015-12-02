@@ -303,7 +303,7 @@ void escreverS_input(ofstream& arq){
     		"mov ecx, string\n\t\tmov edx, tamString\n\t\tint 0x80\n\t\tmov esi, 99\n\t\tcmp BYTE [string+esi], 0x0\n\t\tje fimLeitura\n\t\t"
     		"cmp BYTE [string+esi], 0xA\n\t\tje fimLeitura\n\t\tjmp lancarMsgErro\n\t\tfimLeitura:	ret\n\t\t"
     		"inicializaString: cmp BYTE [cont], 100\n\t\tje lacoLeitura\n\t\tmov BYTE [string+esi], 0\n\t\tinc BYTE [cont]\n\t\t"
-    		"inc esi\n\t\tjmp\n\t\tinicializaStringlancarMsgErro:\tmov eax, 4\n\t\tmov ebx, 1\n\t\tmov ecx, msg_erro\n\t\t"
+    		"inc esi\n\t\tjmp inicializaString\n\t\tlancarMsgErro:\tmov eax, 4\n\t\tmov ebx, 1\n\t\tmov ecx, msg_erro\n\t\t"
     		"mov edx, tam_m_erro\n\t\tint 0x80\n\t\tmov eax, 1\n\t\tmov ebx, 0\n\t\tint 0x80"<<endl;
 }
 

@@ -1,11 +1,11 @@
 SECTION TEXT
-		c_input		B
-		;input		H
+		input		B
+		input		H
 		load		B
-		;mult		H
-		;div		DOIS
+		mult		H
+		div		DOIS
 		store		R
-		c_output	R
+		output	R
 		stop
 
 SECTION DATA

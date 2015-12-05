@@ -1,3 +1,13 @@
+/*UnB - Universidade de Brasilia
+Trabalho 2
+Alunos: Alexandre Correia Mesquita de Oliveira ----12/0151294
+Pedro Henrique Souza Tolentino --------------------11/0073967
+*/
+
+
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -36,9 +46,39 @@ int main( int argc, char** argv ){
 }
 
 string* gerarObjeto(string nomeArq){
-	string textTeste = "B8 04 00 00 00 BB 01 00 00 00 B9 20 80 04 08 BA 0E 00 00 00 CD 80 B8 01 00 00 00 CD 80";
-	string dataTeste = "48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 0A";
+
+	string line;
+	string textTeste;
+	string dataTeste;
 	string result[2];
+	int flag = 0;
+
+	ifstream in (nomeArq);
+    if(in.is_open())
+    {
+    	while(getline(in, line))
+    	{
+    		switch(flag)
+    		{
+    			case 1:
+    				textTeste = textTeste += line;
+    			break;
+    			case 2:
+    				dataTeste = dataTeste += line;
+    			break;
+    		}
+    		if(line == "section .text")
+    		{
+    			flag = 1;
+    			textTeste = line;
+    		}
+    		else if(line == "section .data")
+    		{
+    			flag = 2;
+    			dataTeste = line;
+    		}
+    	}
+    }
 
 	result[0] = textTeste;
 	result[1] = dataTeste;

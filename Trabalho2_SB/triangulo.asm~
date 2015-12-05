@@ -5,7 +5,7 @@ SECTION TEXT
 		mult		H
 		div		DOIS
 		store		R
-		output	R
+		c_output	R
 		stop
 
 SECTION DATA

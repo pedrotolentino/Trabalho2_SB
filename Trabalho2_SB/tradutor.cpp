@@ -1,3 +1,9 @@
+/*UnB - Universidade de Brasilia
+Trabalho 2
+Alunos: Alexandre Correia Mesquita de Oliveira ----12/0151294
+Pedro Henrique Souza Tolentino --------------------11/0073967
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
